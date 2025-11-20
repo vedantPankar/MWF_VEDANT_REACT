@@ -1,0 +1,9 @@
+.navbar{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.navItem {
+    margin: 0 30px;
+}

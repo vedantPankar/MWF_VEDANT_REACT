@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./Components/Header";
+import AddTask from "./Components/AddTask";
+import ListTask from "./Components/ListTask";
+import { NavLink, Route, Routes } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+  const handleAddTask = (task) => {
+    setTasks([...tasks, task]);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header title="My Todo Manager" />
+      <nav>
+        <NavLink to="/">Home</NavLink> | <NavLink to="/about">about</NavLink>
+      </nav>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <AddTask onAddTask={handleAddTask} />
+              <ListTask tasks={tasks} />
+            </>
+          }
+        />
+        <Route path="/about" element={<p>Welcome</p>} />
+      </Routes>
     </div>
   );
 }

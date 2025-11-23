@@ -38,6 +38,8 @@ function App() {
   const handleAnswer = async (selected) => {
     if (selected === questions[currentQuestion].correct) {
       setScore((prev) => prev + 1);
+    } else {
+      setShowResults(true);
     }
   };
 

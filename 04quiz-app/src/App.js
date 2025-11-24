@@ -38,13 +38,41 @@ function App() {
   const handleAnswer = async (selected) => {
     if (selected === questions[currentQuestion].correct) {
       setScore((prev) => prev + 1);
+    }
+
+    const nextQuetion = currentQuestion + 1;
+    if (nextQuetion < questions.length) {
+      setCurrentQuestion(nextQuetion);
     } else {
       setShowResults(true);
     }
   };
 
-  const nextQuetion = currentQuestion + 1;
-  if (nextQuetion < questions.length) return <Header score={score} />;
+  return (
+    <div className="App">
+      <Header score={score}>
+        {showResults ? (
+          <ResultPage
+            score={score}
+            total={questions.length}
+            restart={startQuiz}
+          />
+        ) : questions.length > 0 ? (
+          <QuestionCard
+            question={questions[currentQuestion].question}
+            option={questions[currentQuestion].options}
+            onAnswer={handleAnswer}
+          />
+        ) : (
+          <CategorySelection
+            setCategory={setCategory}
+            setDifficulty={setDifficulty}
+            startQuiz={startQuiz}
+          />
+        )}
+      </Header>
+    </div>
+  );
 }
 
 export default App;

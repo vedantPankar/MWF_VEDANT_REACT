@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-function QuestionCard({ question, options, onAwnser }) {
+function QuestionCard({ question, options, onAnswer }) {
   const [selected, setSelected] = useState("");
   const handleSubmit = () => {
     if (selected) {
-      onAwnser(selected);
+      onAnswer(selected);
       setSelected("");
     }
   };
@@ -14,7 +14,7 @@ function QuestionCard({ question, options, onAwnser }) {
       {options.map((option, index) => (
         <button
           key={index}
-          onClick={setSelected(option)}
+          onClick={() => setSelected(option)}
           className={`option ${selected === option} ? "selected" : ""`}
         >
           {option}

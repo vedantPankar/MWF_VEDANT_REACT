@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Header from "./Components/Header";
 import CategorySelection from "./Components/CategorySelection";
@@ -16,14 +15,14 @@ function App() {
 
   const fetchQuestions = async () => {
     const res = await fetch(
-      `https://opentdb.com/api.php?amount=10&category${category}&difficulty=${difficulty}&type=multiple`
+      `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`
     );
-    const data = res.json();
+    const data = await res.json();
 
     setQuestions(
       data.results.map((q) => ({
         question: q.question,
-        options: [...q.incirrect_answers, q.correct_answers].sort(
+        options: [...q.incorrect_answers, q.correct_answer].sort(
           () => Math.random
         ),
         correct: q.correct_answer,
@@ -63,7 +62,7 @@ function App() {
       ) : questions.length > 0 ? (
         <QuestionCard
           question={questions[currentQuestion].question}
-          option={questions[currentQuestion].options}
+          options={questions[currentQuestion].options}
           onAnswer={handleAnswer}
         />
       ) : (

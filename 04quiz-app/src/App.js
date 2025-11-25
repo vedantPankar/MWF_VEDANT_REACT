@@ -1,6 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Header from "./Components/Header";
+import CategorySelection from "./Components/CategorySelection";
+import QuestionCard from "./Components/QuestionCard";
+import ResultPage from "./Components/ResultPage";
 import { useState } from "react";
 
 function App() {

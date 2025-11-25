@@ -53,27 +53,26 @@ function App() {
 
   return (
     <div className="App">
-      <Header score={score}>
-        {showResults ? (
-          <ResultPage
-            score={score}
-            total={questions.length}
-            restart={startQuiz}
-          />
-        ) : questions.length > 0 ? (
-          <QuestionCard
-            question={questions[currentQuestion].question}
-            option={questions[currentQuestion].options}
-            onAnswer={handleAnswer}
-          />
-        ) : (
-          <CategorySelection
-            setCategory={setCategory}
-            setDifficulty={setDifficulty}
-            startQuiz={startQuiz}
-          />
-        )}
-      </Header>
+      <Header score={score} />
+      {showResults ? (
+        <ResultPage
+          score={score}
+          total={questions.length}
+          restart={startQuiz}
+        />
+      ) : questions.length > 0 ? (
+        <QuestionCard
+          question={questions[currentQuestion].question}
+          option={questions[currentQuestion].options}
+          onAnswer={handleAnswer}
+        />
+      ) : (
+        <CategorySelection
+          setCategory={setCategory}
+          setDifficulty={setDifficulty}
+          startQuiz={startQuiz}
+        />
+      )}
     </div>
   );
 }

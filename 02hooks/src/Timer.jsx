@@ -12,7 +12,7 @@ function Timer() {
   }, []);
   return (
     <div>
-      <p>Timer: ${time}</p>
+      <p>Timer: {time}</p>
     </div>
   );
 }

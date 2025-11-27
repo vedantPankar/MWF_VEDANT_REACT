@@ -1,9 +1,10 @@
 import "./App.css";
+import Timer from "./Timer";
 // import UseState from "./UseState";
 // import Maps from "./Maps";
 // import Conditionss from "./Conditionss";
 // import Event from "./Event";
-import UseEffect from "./UseEffect";
+// import UseEffect from "./UseEffect";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       {/* <Maps /> */}
       {/* <Conditionss /> */}
       {/* <Event /> */}
-      <UseEffect />
+      {/* <UseEffect /> */}
+      <Timer />
     </>
   );
 }

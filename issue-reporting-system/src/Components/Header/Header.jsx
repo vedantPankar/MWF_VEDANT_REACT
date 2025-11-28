@@ -28,7 +28,7 @@ function Header() {
       <ul className="flex gap-5 items-center">
         {navItems.map((item) => (
           <li key={item.name}>
-            <Link>{item.name}</Link>
+            <Link to={item.path}>{item.name}</Link>
           </li>
         ))}
       </ul>

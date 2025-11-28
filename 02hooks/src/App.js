@@ -1,5 +1,7 @@
 import "./App.css";
+import FetchData from "./FetchData";
 import Timer from "./Timer";
+import UpdateTitle from "./UpdateTitle";
 // import UseState from "./UseState";
 // import Maps from "./Maps";
 // import Conditionss from "./Conditionss";
@@ -14,7 +16,9 @@ function App() {
       {/* <Conditionss /> */}
       {/* <Event /> */}
       {/* <UseEffect /> */}
-      <Timer />
+      {/* <Timer /> */}
+      {/* <UpdateTitle /> */}
+      <FetchData />
     </>
   );
 }

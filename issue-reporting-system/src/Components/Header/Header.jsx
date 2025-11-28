@@ -18,7 +18,7 @@ function Header() {
     },
   ];
   return (
-    <div className="flex justify-between bg-white m-2 px-20 py-2">
+    <div className="flex justify-between bg-white m-2 px-20 py-3 border-b-2">
       <div>
         <Link to="/" className="flex gap-2 items-center">
           <House className="h-9 w-9 text-white bg-blue-500 rounded-lg p-2" />

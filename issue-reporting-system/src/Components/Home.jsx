@@ -1,5 +1,7 @@
 import React from "react";
 import { AlertCircle, Zap, FileText, CircleCheckBig } from "lucide-react";
+import { Button } from "./index";
+import { Link } from "react-router-dom";
 function Home() {
   return (
     <header className="border-t-2 border-gray-100">
@@ -7,15 +9,26 @@ function Home() {
         <div className="mb-6">
           <AlertCircle className="h-16 w-16 text-blue-600 bg-blue-100 p-4 rounded-full" />
         </div>
-        <div className="font-medium">
+        <div className="font-medium p-4">
           <p>Hostel/PG Issue Reporting System</p>
         </div>
-        <div className="font-light w-1/2 m-6 text-center">
+        <div className="font-light w-1/2 p-1 text-center">
           <p>
             Report and track maintenance issues, complaints, and requests in
             your hostel or PG accommodation. Our system ensures quick resolution
             and transparent communication.
           </p>
+        </div>
+
+        <div className="grid grid-cols-2 gap-6 m-10">
+          <Button variant="secoandary">
+            {/* TODO */}
+            <Link to="">Report an Issue</Link>
+          </Button>
+          <Button>
+            {/* TODO */}
+            <Link to="">View Dashboard</Link>
+          </Button>
         </div>
       </div>
 

@@ -8,6 +8,7 @@ import AuthLayout from "./AuthLayout";
 import ReportIssueForm from "./ReportIssueForm/ReportIssueForm";
 import Dashboard from "./Dashboard";
 import Input from "./Input";
+import Select from "./Select";
 
 export {
   Header,
@@ -20,4 +21,5 @@ export {
   ReportIssueForm,
   Dashboard,
   Input,
+  Select,
 };

@@ -1,0 +1,31 @@
+import React, { forwardRef, useId } from "react";
+
+function Select({ label, list, options = [], className = "", ...props }, ref) {
+  const id = useId();
+
+  return (
+    <div>
+      {label && (
+        <label className="block font-semibold" htmlFor={id}>
+          {label}
+        </label>
+      )}
+
+      <input
+        id={id}
+        list={list}
+        ref={ref}
+        className={`w-full bg-gray-100 p-2 rounded-lg ${className}`}
+        {...props}
+      />
+
+      <datalist id={list}>
+        {options.map((option, index) => (
+          <option key={index} value={option} />
+        ))}
+      </datalist>
+    </div>
+  );
+}
+
+export default forwardRef(Select);

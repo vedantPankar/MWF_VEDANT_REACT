@@ -2,9 +2,12 @@ import { useState } from "react";
 import { Key } from "lucide-react";
 import { Button, Input } from "../index";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../Store/authSlice";
 
 function LoginForm() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,15 +17,16 @@ function LoginForm() {
   const handleLogin = () => {
     setError("");
 
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const userData = JSON.parse(localStorage.getItem("user"));
 
-    if (!storedUser) {
+    if (!userData) {
       setError("No account found. Please register first.");
       return;
     }
 
-    if (email === storedUser.email && password === storedUser.password) {
+    if (email === userData.email && password === userData.password) {
       localStorage.setItem("isLoggedIn", "true");
+      dispatch(login(userData));
       navigate("/");
     } else {
       setError("Invalid email or password");

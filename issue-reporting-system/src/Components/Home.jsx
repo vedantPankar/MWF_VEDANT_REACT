@@ -21,11 +21,11 @@ function Home() {
         </div>
 
         <div className="grid grid-cols-2 gap-6 m-10">
-          <Button variant="secoandary">
+          <Button variant="secoandary" className="p-2 rounded-lg">
             {/* TODO */}
             <Link to="/report-issue">Report an Issue</Link>
           </Button>
-          <Button>
+          <Button className="p-2 rounded-lg hover:bg-gray-100">
             {/* TODO */}
             <Link to="/dashboard">View Dashboard</Link>
           </Button>

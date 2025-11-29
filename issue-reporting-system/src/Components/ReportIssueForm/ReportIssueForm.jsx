@@ -93,7 +93,6 @@ function ReportIssueForm() {
           <div className=" grid grid-cols-2 mb-5 gap-4">
             <Select
               label="Category *"
-              list="category"
               options={[
                 "Plumbing",
                 "Electrical",
@@ -110,8 +109,7 @@ function ReportIssueForm() {
 
             <Select
               label="Priority *"
-              list="priority"
-              options={["Low", "Medium", "High", "Critical"]}
+              options={["Low", "Medium", "High"]}
               placeholder="Select priority"
               onChange={(e) => setPriority(e.target.value)}
             />

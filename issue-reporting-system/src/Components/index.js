@@ -9,6 +9,7 @@ import ReportIssueForm from "./ReportIssueForm/ReportIssueForm";
 import Dashboard from "./Dashboard";
 import Input from "./Input";
 import Select from "./Select";
+import Issue from "./Issue";
 
 export {
   Header,
@@ -22,4 +23,5 @@ export {
   Dashboard,
   Input,
   Select,
+  Issue,
 };

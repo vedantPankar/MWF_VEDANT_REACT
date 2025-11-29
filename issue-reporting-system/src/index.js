@@ -10,6 +10,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   DashBoardPage,
   HomePage,
+  IssuePage,
   LoginPage,
   RegisterPage,
   ReportIssuePage,
@@ -55,6 +56,14 @@ const router = createBrowserRouter([
         element: (
           <AuthLayout>
             <DashBoardPage />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/:id",
+        element: (
+          <AuthLayout>
+            <IssuePage />
           </AuthLayout>
         ),
       },

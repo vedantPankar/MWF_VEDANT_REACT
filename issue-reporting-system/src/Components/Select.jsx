@@ -11,19 +11,19 @@ function Select({ label, list, options = [], className = "", ...props }, ref) {
         </label>
       )}
 
-      <input
+      <select
         id={id}
         list={list}
         ref={ref}
         className={`w-full bg-gray-100 p-2 rounded-lg ${className}`}
         {...props}
-      />
-
-      <datalist id={list}>
+      >
         {options.map((option, index) => (
-          <option key={index} value={option} />
+          <option key={index} value={option} className="">
+            {option}
+          </option>
         ))}
-      </datalist>
+      </select>
     </div>
   );
 }

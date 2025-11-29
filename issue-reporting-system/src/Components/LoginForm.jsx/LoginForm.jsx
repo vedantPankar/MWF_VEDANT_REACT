@@ -23,7 +23,7 @@ function LoginForm() {
 
     if (email === storedUser.email && password === storedUser.password) {
       localStorage.setItem("isLoggedIn", "true");
-      navigate("/dashboard");
+      navigate("/");
     } else {
       setError("Invalid email or password");
     }

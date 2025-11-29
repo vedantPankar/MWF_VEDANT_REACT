@@ -23,11 +23,11 @@ function Home() {
         <div className="grid grid-cols-2 gap-6 m-10">
           <Button variant="secoandary">
             {/* TODO */}
-            <Link to="">Report an Issue</Link>
+            <Link to="/report-issue">Report an Issue</Link>
           </Button>
           <Button>
             {/* TODO */}
-            <Link to="">View Dashboard</Link>
+            <Link to="/dashboard">View Dashboard</Link>
           </Button>
         </div>
       </div>

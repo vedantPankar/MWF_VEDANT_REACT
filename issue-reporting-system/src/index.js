@@ -1,10 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import React from "react";
+import { store } from "./Store/store";
+import { Provider } from "react-redux";
+import ReactDOM from "react-dom/client";
+import { AuthLayout } from "./Components";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { HomePage, LoginPage, RegisterPage } from "./Pages";
+import {
+  DashBoardPage,
+  HomePage,
+  LoginPage,
+  RegisterPage,
+  ReportIssuePage,
+} from "./Pages";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -19,18 +28,44 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <LoginPage />,
+        element: (
+          <AuthLayout authentication={false}>
+            <LoginPage />
+          </AuthLayout>
+        ),
       },
       {
         path: "/register",
-        element: <RegisterPage />,
+        element: (
+          <AuthLayout authentication={false}>
+            <RegisterPage />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/report-issue",
+        element: (
+          <AuthLayout>
+            <ReportIssuePage />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <AuthLayout>
+            <DashBoardPage />
+          </AuthLayout>
+        ),
       },
     ],
   },
 ]);
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 

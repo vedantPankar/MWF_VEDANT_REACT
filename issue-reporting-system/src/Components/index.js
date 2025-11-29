@@ -4,5 +4,20 @@ import Home from "./Home";
 import LoginForm from "./LoginForm.jsx/LoginForm";
 import RegisterForm from "./RegisterForm/RegisterForm";
 import Button from "./Button";
+import AuthLayout from "./AuthLayout";
+import ReportIssueForm from "./ReportIssueForm/ReportIssueForm";
+import Dashboard from "./Dashboard";
+import Input from "./Input";
 
-export { Header, Footer, Home, LoginForm, RegisterForm, Button };
+export {
+  Header,
+  Footer,
+  Home,
+  LoginForm,
+  RegisterForm,
+  Button,
+  AuthLayout,
+  ReportIssueForm,
+  Dashboard,
+  Input,
+};

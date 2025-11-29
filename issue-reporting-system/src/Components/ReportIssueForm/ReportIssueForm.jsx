@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Input, Button, Select } from "../index";
 import { AlertCircle } from "lucide-react";
+import { useSelector } from "react-redux";
 
 function ReportIssueForm() {
-  const [fullName, setFullName] = useState("");
-  const [roomNumber, setRoomNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const user = useSelector((state) => state.auth.userData);
+  const [issueTitle, setIssueTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [priority, setPriority] = useState("");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -16,36 +18,36 @@ function ReportIssueForm() {
   const navigate = useNavigate();
 
   const handleReport = (e) => {
-    e.preventDefault(); // Prevents page refresh
+    e.preventDefault();
     setError("");
     setSuccess("");
 
     // Validation
-    if (!fullName || !roomNumber || !email || !password || !confirmPassword) {
+    if (!issueTitle || !category || !priority || !description || !location) {
       setError("All fields are required");
       return;
     }
 
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-
-    // Create user object
-    const newUser = {
-      fullName,
-      roomNumber,
-      email,
-      password,
+    const newReport = {
+      issueTitle,
+      category,
+      priority,
+      description,
+      location,
+      roomNumber: user.roomNumber,
+      fullName: user.fullName,
+      date: new Date().toISOString(),
     };
 
-    // Save to localStorage
-    localStorage.setItem("user", JSON.stringify(newUser));
+    const existingReports = JSON.parse(localStorage.getItem("reports")) || [];
 
-    setSuccess("Account created successfully!");
+    existingReports.push(newReport);
 
-    // Redirect to Login page
-    setTimeout(() => navigate("/login"), 1000);
+    localStorage.setItem("reports", JSON.stringify(existingReports));
+
+    setSuccess("Issue is registered");
+
+    setTimeout(() => navigate("/dashboard"), 1000);
   };
 
   return (
@@ -83,7 +85,7 @@ function ReportIssueForm() {
               label="Issue Title *"
               type="text"
               placeholder="Brief desciption of the issue"
-              onChange={(e) => setFullName(e.target.value)}
+              onChange={(e) => setIssueTitle(e.target.value)}
             />
           </div>
 
@@ -102,50 +104,40 @@ function ReportIssueForm() {
                 "Other",
               ]}
               placeholder="Select category"
-              onChange={(e) => setRoomNumber(e.target.value)}
+              onChange={(e) => setCategory(e.target.value)}
             />
 
             <Select
               label="Priority *"
-              list="category"
-              options={[
-                "Plumbing",
-                "Electrical",
-                "Cleaning",
-                "Food Quality",
-                "WiFi/Internet",
-                "Furniture",
-                "Safety",
-                "Other",
-              ]}
+              list="priority"
+              options={["Low", "Medium", "High", "Critical"]}
               placeholder="Select priority"
-              onChange={(e) => setRoomNumber(e.target.value)}
+              onChange={(e) => setPriority(e.target.value)}
             />
           </div>
 
           <div className="mb-5">
-            <Input
-              label="Description *"
-              type="text area"
+            <label className="text-sm font-semibold">Description *</label>
+            <textarea
+              className=" bg-gray-100 rounded-lg w-full p-2 mt-1"
               placeholder="Provide the detailed information about the issue"
-              onChange={(e) => setEmail(e.target.value)}
-            />
+              rows="4"
+              onChange={(e) => setDescription(e.target.value)}
+            ></textarea>
           </div>
 
           <div className=" grid grid-cols-2 mb-5 gap-4">
             <Input
               label="Location *"
-              type="password"
+              type="text"
               placeholder="e.g. 2nd floor, Common Area"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setLocation(e.target.value)}
             />
 
             <Input
               label="Room Number"
-              type="password"
-              placeholder="Enter your password"
-              // TODO:
-              onChange={(e) => setPassword(e.target.value)}
+              type="text"
+              value={user.roomNumber}
               disabled
             />
           </div>
@@ -153,26 +145,16 @@ function ReportIssueForm() {
           <div className="mb-5">
             <Input
               label="Your Name"
-              type="password"
-              placeholder="Confirm your password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              type="text"
+              value={user?.fullName || "-"}
               disabled
             />
           </div>
 
           <div className="mb-5">
             <Button type="submit" className="w-full" variant="secoandary">
-              Create Account
+              Submit Issue
             </Button>
-          </div>
-
-          <div className="mb-5 text-center">
-            <p>
-              Already have an account?{" "}
-              <Link to="/login" className="text-blue-600 hover:underline">
-                Sign In here
-              </Link>
-            </p>
           </div>
         </div>
       </form>

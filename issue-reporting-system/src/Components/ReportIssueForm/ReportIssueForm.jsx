@@ -29,6 +29,7 @@ function ReportIssueForm() {
     }
 
     const newReport = {
+      status: "Pending",
       issueTitle,
       category,
       priority,

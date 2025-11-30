@@ -6,7 +6,7 @@ function Select({ label, list, options = [], className = "", ...props }, ref) {
   return (
     <div>
       {label && (
-        <label className="block font-semibold" htmlFor={id}>
+        <label className="block " htmlFor={id}>
           {label}
         </label>
       )}

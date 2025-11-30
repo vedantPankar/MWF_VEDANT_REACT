@@ -17,7 +17,7 @@ function LoginForm() {
   const handleLogin = () => {
     setError("");
 
-    const userData = JSON.parse(localStorage.getItem("user"));
+    const userData = JSON.parse(sessionStorage.getItem("user"));
 
     if (!userData) {
       setError("No account found. Please register first.");
@@ -25,7 +25,7 @@ function LoginForm() {
     }
 
     if (email === userData.email && password === userData.password) {
-      localStorage.setItem("isLoggedIn", "true");
+      sessionStorage.setItem("isLoggedIn", "true");
       dispatch(login(userData));
       navigate("/");
     } else {

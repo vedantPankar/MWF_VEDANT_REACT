@@ -7,7 +7,7 @@ function Dashboard() {
   const [category, setCategory] = useState("All Category");
   const [search, setSearch] = useState("");
 
-  const reportedIssed = JSON.parse(localStorage.getItem("reports")) || [];
+  const reportedIssed = JSON.parse(sessionStorage.getItem("reports")) || [];
   console.log(reportedIssed);
 
   const totalIssue = reportedIssed.length;

@@ -39,8 +39,8 @@ function RegisterForm() {
       password,
     };
 
-    // Save to localStorage
-    localStorage.setItem("user", JSON.stringify(newUser));
+    // Save to sessionStorage
+    sessionStorage.setItem("user", JSON.stringify(newUser));
 
     setSuccess("Account created successfully!");
 

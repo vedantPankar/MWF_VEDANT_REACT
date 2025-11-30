@@ -40,11 +40,11 @@ function ReportIssueForm() {
       date: new Date().toISOString(),
     };
 
-    const existingReports = JSON.parse(localStorage.getItem("reports")) || [];
+    const existingReports = JSON.parse(sessionStorage.getItem("reports")) || [];
 
     existingReports.push(newReport);
 
-    localStorage.setItem("reports", JSON.stringify(existingReports));
+    sessionStorage.setItem("reports", JSON.stringify(existingReports));
 
     setSuccess("Issue is registered");
 

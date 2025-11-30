@@ -4,11 +4,11 @@ import axios from "axios";
 function Posts() {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(
-    Number(localStorage.getItem("page")) || 1
+    Number(sessionStorage.getItem("page")) || 1
   );
 
   const [sortType, setSortType] = useState(
-    localStorage.getItem("sort") || "id-asc"
+    sessionStorage.getItem("sort") || "id-asc"
   );
 
   const postsPerPage = 10;
@@ -28,10 +28,10 @@ function Posts() {
     fetchData();
   }, []);
 
-  // save to localStorage
+  // save to sessionStorage
   useEffect(() => {
-    localStorage.setItem("page", currentPage);
-    localStorage.setItem("sort", sortType);
+    sessionStorage.setItem("page", currentPage);
+    sessionStorage.setItem("sort", sortType);
   }, [currentPage, sortType]);
 
   // Sorting logic

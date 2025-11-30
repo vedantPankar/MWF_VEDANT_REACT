@@ -9,24 +9,24 @@ function Issue() {
 
   const issueIndex = Number(id);
 
-  const reportedIssues = JSON.parse(localStorage.getItem("reports")) || [];
+  const reportedIssues = JSON.parse(sessionStorage.getItem("reports")) || [];
   const issue = reportedIssues[issueIndex];
 
   const [updateStatus, setUpdateStatus] = useState(issue.status);
 
   useEffect(() => {
-    const allIssues = JSON.parse(localStorage.getItem("reports")) || [];
+    const allIssues = JSON.parse(sessionStorage.getItem("reports")) || [];
 
     allIssues[issueIndex].status = updateStatus;
 
-    localStorage.setItem("reports", JSON.stringify(allIssues));
+    sessionStorage.setItem("reports", JSON.stringify(allIssues));
   }, [updateStatus, issueIndex]);
 
   // Delete issue
   const handleDelete = () => {
     const updated = reportedIssues.filter((_, idx) => idx !== issueIndex);
 
-    localStorage.setItem("reports", JSON.stringify(updated));
+    sessionStorage.setItem("reports", JSON.stringify(updated));
 
     navigate("/dashboard");
   };

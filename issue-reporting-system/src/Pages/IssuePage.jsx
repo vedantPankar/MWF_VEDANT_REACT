@@ -1,7 +1,12 @@
 import React from "react";
+import { Issue } from "../Components";
 
 function IssuePage() {
-  return <div>IssuePage</div>;
+  return (
+    <div>
+      <Issue />
+    </div>
+  );
 }
 
 export default IssuePage;

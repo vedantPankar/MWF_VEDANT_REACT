@@ -91,10 +91,6 @@ function Issue() {
               </div>
             </div>
           </div>
-
-          <div className="border-2 border-gray-100 bg-white p-4 rounded-xl m-2">
-            box2
-          </div>
         </div>
 
         <div>

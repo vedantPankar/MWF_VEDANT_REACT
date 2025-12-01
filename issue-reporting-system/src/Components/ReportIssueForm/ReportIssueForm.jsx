@@ -37,7 +37,7 @@ function ReportIssueForm() {
       location,
       roomNumber: user.roomNumber,
       fullName: user.fullName,
-      date: new Date().toISOString(),
+      date: new Date().toLocaleDateString(),
     };
 
     const existingReports = JSON.parse(sessionStorage.getItem("reports")) || [];
